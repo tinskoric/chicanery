@@ -21,7 +21,7 @@ Chicanery further introduces a series of mechanics that can be broadly categoriz
 
 <details>
 
-  <summary>Units</summary>
+<summary>Units</summary>
 
 This note is short as the combat mechanics of units remain the same—enjoy your attacks, holds, supports, and convoy orders—rather, units are slightly altered in how they recover during retreat phases. After each movement phase, units must be *replenished* before being usable in combat for the next phase. The below table details the scenarios or units in a given movement phase, and their subsequent replenishment need in the following retreat phase:
 
@@ -43,43 +43,39 @@ This note is short as the combat mechanics of units remain the same—enjoy your
 
 : Unit Replenishment Chart
 
-As can be seen, losing a battle over a tile (province) where you are defending is very costly, particularly at the start. **If a unit is not replenished, it will be unusable for combat actions, including for support orders**. An un-replenished unit will not be able to take any orders—no attacks, holds, or supports—*except convoys that would bring it to friendly territory*[^3](cannot be used in convoys for attacking). An un-replenished unit will not hold if attacked, no matter if it is supported or not, and rather will immediately retreat[^4]. Replenishment costs *income* and the costs can be altered by *research*, which segues us nicely into the next sections.
-
-</details>
-
 [^1]: If you bounce your own units, and no one else tries to attack the area you bounced, then that counts as not having engaged in combat with those units—so long as those units weren't attacked otherwise.
 
 [^2]: Pillaging sure is great.
+
+As can be seen, losing a battle over a tile (province) where you are defending is very costly, particularly at the start. **If a unit is not replenished, it will be unusable for combat actions, including for support orders**. An un-replenished unit will not be able to take any orders—no attacks, holds, or supports—*except convoys that would bring it to friendly territory*[^3](cannot be used in convoys for attacking). An un-replenished unit will not hold if attacked, no matter if it is supported or not, and rather will immediately retreat[^4]. Replenishment costs *income* and the costs can be altered by *research*, which segues us nicely into the next sections.
 
 [^3]: Why you would to do this is... a question—but it is a permitted order.
 
 [^4]: Choosing not to replenish a unit is NOT a death sentence for it. It will just keep retreating until you replenish it. It is perfectly viable—if you are okay with losing ground—to save money by not replenishing some units.
 
+</details>
+
 <details>
 
-  <summary>Economy</summary>
+<summary>Economy</summary>
 
 In traditional (we're not talking about esoteric variants right now) Diplomacy, the player "economy" is extremely straightforward. There are a number of supply centers (centers hereafter) on the board based in cities. The number of centers you have defines how many units (referring to armies/fleets) you may build. In Chicanery, this relationship is abstracted.
 
 In Chicanery, centers generate **income** (denoted, $I$, in included formulae) and **action points** (denoted AP hereafter) which serve dual functions. Income is used to *purchase* (and *replenish*, in the case of units) things like units, buildings, and "accoutrements"[^5] (discussed in the research subsection). AP are used to *order* units and accoutrements. Income and AP are earned and accrued differently across turns and phases, illustrating the subtle difference in their functions. See the below sections for details:
 
+[^5]: Chose a fancy-sounding word but its really just a research tree that gives some buffs to economic management and some useful tools for deceit/strategy.
+
 ### Income
 
 Income is a linear function of the number of centers controlled between **turns**, earned at the start of the Spring phase (the start of a new turn), and available to be spent on various uses across all phases. Income is calculated purely by multiplying a scalar by the number of centers you possess (and adding bonuses from research).
 
-+----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Phase          | Description                                                                                                                                                                           |
-+================+=======================================================================================================================================================================================+
+| Phase | Description |
+|----|----|
 | Spring ($\pm$) | Income from centers held after the previous Fall phase is earned and added to the rolling total. Income can be spent on research (like replenishment cost buffs!) and research items. |
-+----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Summer ($-$)   | Income is spent on replenishing units.                                                                                                                                                |
-+----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Fall ($-$)     | Income can be spent on research items.                                                                                                                                                |
-+----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Winter ($-$)   | Income is spent on replenishing units.                                                                                                                                                |
-+----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Build ($-$)    | Income is spent on purchasing new units and research items.                                                                                                                           |
-+----------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Summer ($-$) | Income is spent on replenishing units. |
+| Fall ($-$) | Income can be spent on research items. |
+| Winter ($-$) | Income is spent on replenishing units. |
+| Build ($-$) | Income is spent on purchasing new units and research items. |
 
 : Income by Phase
 
@@ -89,19 +85,13 @@ Lastly, **income can be saved between phases and turns**. You will not lose the 
 
 AP are a decreasing function of the number of centers controlled between **phases**, earned at the start of the Spring and Fall phases, and available to be spent for use across all phases. AP is calculated by adding a fixed base number for a given number of centers and an exponentially decreasing function of your total center-count. As your state grows, the relative AP that you get from each center is less and less, constraining you opportunities for orders in each turn.
 
-+----------------+-------------------------------------------------------------------------------------------------------------------------------------------+
-| Phase          | Description                                                                                                                               |
-+================+===========================================================================================================================================+
+| Phase | Description |
+|----|----|
 | Spring ($\pm$) | AP from centers held after the previous Fall phase is earned. AP can be spent on issuing orders (attack, hold, support, convoy) to units. |
-+----------------+-------------------------------------------------------------------------------------------------------------------------------------------+
-| Summer ($-$)   | AP is spent on issuing retreat orders to units.                                                                                           |
-+----------------+-------------------------------------------------------------------------------------------------------------------------------------------+
-| Fall ($\pm$)   | AP from centers held after the Spring phase is earned. AP can be spent on issuing orders to units.                                        |
-+----------------+-------------------------------------------------------------------------------------------------------------------------------------------+
-| Winter ($-$)   | AP is spent on issuing retreat orders to units.                                                                                           |
-+----------------+-------------------------------------------------------------------------------------------------------------------------------------------+
-| Build ($-$)    | AP is spent on placing new units and researched buildings—ports, supply hubs, and forts.                                                  |
-+----------------+-------------------------------------------------------------------------------------------------------------------------------------------+
+| Summer ($-$) | AP is spent on issuing retreat orders to units. |
+| Fall ($\pm$) | AP from centers held after the Spring phase is earned. AP can be spent on issuing orders to units. |
+| Winter ($-$) | AP is spent on issuing retreat orders to units. |
+| Build ($-$) | AP is spent on placing new units and researched buildings—ports, supply hubs, and forts. |
 
 : Action Points (AP) by Phase
 
@@ -113,11 +103,9 @@ Lastly, **AP can only be saved between phases**. You WILL lose the AP you do not
 
 </details>
 
-[^5]: Chose a fancy-sounding word but its really just a research tree that gives some buffs to economic management and some useful tools for deceit/strategy.
-
 <details>
 
-  <summary>Research</summary>
+<summary>Research</summary>
 
 Last but not least is research. This mechanic integrates with the unit and economy changes, but also includes some fun gameplay elements. First there are plain buffs. These buffs center around reductions to the income cost of replenishment, some income bonuses for taking centers, and increases to the amount of AP earned for larger players. All items—buildings, accoutrements—must first be researched for a fixed cost of income. After being researched, individual buildings must be bought with income and placed with AP each time, and individual accoutrements must be bought with income (no AP needed for their use!). **Accoutrements are tools for subterfuge and deceit**. In the case of buffs, research functionally just means paying more for a better effect as the research for buffs is reset each turn. For buildings, research is a one-time cost to be able to build something—the research is not reset. For accoutrements, research is a one-time cost—the research is not reset—but accoutrements are one-time use, and must be bought for each use. Below are sections detailing research across the three defined groups:
 
@@ -132,6 +120,12 @@ There are only three buildings, they cost income to research (once), and then in
 | Supply Hub | In classic Diplomacy, you can only build units in your starting centers... until you build a supply hub! Supply hubs allow you to build units in whichever tile (province) a supply hub is present in. Supply hubs *do not* earn income or AP, and they *do not* contribute to your total number of centers. Supply centers *do not* require replenishment, but **are immediately destroyed upon the loss of the tile**[^8]. |
 
 : Research Information: Buildings
+
+[^6]: To elaborate: if you beat someone in Spring `year-something` and take their tile, and that tile had a fort stationed therein, then if you do not replenish the fort **before** Fall of `year-something+1` (so after Fall of `year-something` and Spring of `year-something+1` , up to Summer of `year-something+1` at the latest) it will be destroyed and removed from the map along with the +1 defense in the tile.
+
+[^7]: In this case, you can get a +2 if you perpetually have the unit in the port defending the unit in the main tile.
+
+[^8]: If player A builds a supply hub in Build of `year-something` and player B takes it in the Spring of `year-something+1`, then the supply hub will be destroyed.
 
 ### Buffs
 
@@ -159,9 +153,13 @@ War Plans:
 
 > Researching down this path and purchasing the associated accoutrement allows you to get hints on one specified order (*1* move can still be a notable informational advantage) in a tile (province) by another player at the time the accoutrement is used[^9]. The higher the level of research, the more accurate the hint—at lower levels, dummy moves will be by a probability chance, and/or the type of move may be reported, but not the destination.
 
+[^9]: Be careful, if you use it before the enter an order, you'll get nothing!
+
 False Flags:
 
 > Researching down this path and purchasing the associated accoutrement allows you to *fake* hints served by the "War Plans" accoutremont for a specified tile, providing them as dummy moves. While War Plans requires selecting a tile, False Flags work across all tiles as a passive effect to counter War Plans for the phase in which the former is activated[^10]. This muddles the information war between players.
+
+[^10]: That means that it is in your interest to activate this early in the phase you want to use it in!
 
 Government Insiders:
 
@@ -177,13 +175,3 @@ Hi-Fi Audio:
 > No level of research will show exactly which player is in which call, but by knowing the details above and using some deduction it should be possible to decipher who is with who in what calls.
 
 </details>
-
-[^6]: To elaborate: if you beat someone in Spring `year-something` and take their tile, and that tile had a fort stationed therein, then if you do not replenish the fort **before** Fall of `year-something+1` (so after Fall of `year-something` and Spring of `year-something+1` , up to Summer of `year-something+1` at the latest) it will be destroyed and removed from the map along with the +1 defense in the tile.
-
-[^7]: In this case, you can get a +2 if you perpetually have the unit in the port defending the unit in the main tile.
-
-[^8]: If player A builds a supply hub in Build of `year-something` and player B takes it in the Spring of `year-something+1`, then the supply hub will be destroyed.
-
-[^9]: Be careful, if you use it before the enter an order, you'll get nothing!
-
-[^10]: That means that it is in your interest to activate this early in the phase you want to use it in!
