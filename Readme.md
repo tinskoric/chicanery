@@ -1,6 +1,6 @@
 ---
-title: "Chicanery"
-authors: "Kenny Luong, Adam Sikorski, Tin Skoric, Issac Zheng"
+# Chicanery
+Authors: "Kenny Luong, Adam Sikorski, Tin Skoric, Issac Zheng"
 ---
 
 ------------------------------------------------------------------------
