@@ -1,10 +1,11 @@
-# Chicanery
-
 ---
+Title: "Chicanery"
 Authors: "Kenny Luong, Adam Sikorski, Tin Skoric, Issac Zheng"
 ---
 
 ------------------------------------------------------------------------
+
+# Chicanery
 
 A game inspired by [Diplomacy](https://en.wikipedia.org/wiki/Diplomacy_(game) "Diplomacy (game) Wikipedia") but with its own identity.
 
