@@ -3,15 +3,17 @@ Title: "Chicanery"
 Authors: "Kenny Luong, Adam Sikorski, Tin Skoric, Issac Zheng"
 ---
 
+# Chicanery
+
 ------------------------------------------------------------------------
 
 A game inspired by [Diplomacy](https://en.wikipedia.org/wiki/Diplomacy_(game) "Diplomacy (game) Wikipedia") but with its own identity.
 
-# Overview
+## Overview
 
 Chicanery is a multiplayer strategy game with simultaneous turns following the turn/phase format of Diplomacy and using traditional Diplomacy unit combat mechanics. For a thorough understanding of that game, see the online multiplayer implementation linked here: [webDiplomacy](https://webdiplomacy.net/intro.php "Intro to webDiplomacy"). Chicanery notably diverges from Diplomacy in several aspects, but aims to maintain the same core theme: emergent player interactions via negotiation (backstabbing your friends and starting fist-fights over a tabletop game from the '50s). Your fundamental objective remains to dominate the map by outwitting your friends.
 
-# Mechanics
+## Mechanics
 
 Chicanery introduces a series of new mechanics, to support player interaction, but chief among them is a unique implementation of voice-chat for negotiations. Chicanery uses private voice-chat rooms for negotiations between players, rather than messaging (the latter is typical for online diplomacy implementations), although messaging is available for players without microphones *within the room*. The rooms prevent players from being able to juggle multiple negotiations simultaneously, and instead force them to *pick* who they want to focus their energies on in the limited time they have per phase. Additionally, while the rooms are "private" from other players, it is not unfair to assume that if another player is not in your room talking with you, it's because they are talking to someone else. Moreover, there are ways for other players to gather more information on these "private" rooms and attempt to snoop.
 
@@ -61,7 +63,7 @@ In traditional (we're not talking about esoteric variants right now) Diplomacy, 
 
 In Chicanery, centers generate **income** (denoted, $I$, in included formulae) and **action points** (denoted AP hereafter) which serve dual functions. Income is used to *purchase* (and *replenish*, in the case of units) things like units, buildings, and "accoutrements"[^5] (discussed in the research subsection). AP are used to *order* units and accoutrements. Income and AP are earned and accrued differently across turns and phases, illustrating the subtle difference in their functions. See the below sections for details:
 
-## Income
+### Income
 
 Income is a linear function of the number of centers controlled between **turns**, earned at the start of the Spring phase (the start of a new turn), and available to be spent on various uses across all phases. Income is calculated purely by multiplying a scalar by the number of centers you possess (and adding bonuses from research).
 
@@ -83,7 +85,7 @@ Income is a linear function of the number of centers controlled between **turns*
 
 Lastly, **income can be saved between phases and turns**. You will not lose the income you do not spend, it will roll over from one turn to the next. You **can** send other players a portion (or all) of your income.
 
-## Action Points (AP)
+### Action Points (AP)
 
 AP are a decreasing function of the number of centers controlled between **phases**, earned at the start of the Spring and Fall phases, and available to be spent for use across all phases. AP is calculated by adding a fixed base number for a given number of centers and an exponentially decreasing function of your total center-count. As your state grows, the relative AP that you get from each center is less and less, constraining you opportunities for orders in each turn.
 
@@ -119,7 +121,7 @@ Lastly, **AP can only be saved between phases**. You WILL lose the AP you do not
 
 Last but not least is research. This mechanic integrates with the unit and economy changes, but also includes some fun gameplay elements. First there are plain buffs. These buffs center around reductions to the income cost of replenishment, some income bonuses for taking centers, and increases to the amount of AP earned for larger players. All items—buildings, accoutrements—must first be researched for a fixed cost of income. After being researched, individual buildings must be bought with income and placed with AP each time, and individual accoutrements must be bought with income (no AP needed for their use!). **Accoutrements are tools for subterfuge and deceit**. In the case of buffs, research functionally just means paying more for a better effect as the research for buffs is reset each turn. For buildings, research is a one-time cost to be able to build something—the research is not reset. For accoutrements, research is a one-time cost—the research is not reset—but accoutrements are one-time use, and must be bought for each use. Below are sections detailing research across the three defined groups:
 
-## Buildings
+### Buildings
 
 There are only three buildings, they cost income to research (once), and then income purchase and AP to place, and they can only be placed during the build phase. Buildings act to make small adjustments to traditional Diplomacy mechanics. Although these buildings are *not* temporary, there is a limit to the number of buildings you can place according to the total number of provinces you command, and they can be destroyed or lost. If you exceed your limit, then you must delete buildings during the Build phase until you are within your limit.
 
@@ -131,7 +133,7 @@ There are only three buildings, they cost income to research (once), and then in
 
 : Research Information: Buildings
 
-## Buffs
+### Buffs
 
 Buffs include reductions to the income cost of replenishment, some income bonuses for taking centers, and increases to the amount of AP earned for larger players. Buffs are TEMPORARY, and only last the duration of each turn, but activate automatically after research—within the same *phase*. These reductions are earned via research paths and stack. For some examples:
 
@@ -149,7 +151,7 @@ Increases to AP Earned:
 
 > Makes the exponential decrease in AP earned per center flatter.
 
-## Accoutrements
+### Accoutrements
 
 **These are the fun tools**. Accoutrements must be researched (once) using income, and then purchased for each use using income. Unlike buildings, these do not cost AP, and unlike buffs, they are not temporary to only the turn they were purchased in, but rather are one-time use upon purchase and remain available for use across phases and turns until they are used. Accoutrements range from snooping- to "counter-snooping"-related niceties. For example:
 
