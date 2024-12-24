@@ -62,7 +62,7 @@ In Chicanery, centers generate **income** (denoted, $I$, in included formulae) a
 Income is a linear function of the number of centers controlled between **turns**, earned at the start of the Spring phase (the start of a new turn), and available to be spent on various uses across all phases. Income is calculated purely by multiplying a scalar by the number of centers you possess (and adding bonuses from research).
 
 | Phase | Description |
-|-------------|-----------------------------------------------------------|
+|--------------|---------------------------------------------------------|
 | Spring ($\pm$) | Income from centers held after the previous Fall phase is earned and added to the rolling total. Income can be spent on research (like replenishment cost buffs!) and research items. |
 | Summer ($-$) | Income is spent on replenishing units. |
 | Fall ($-$) | Income can be spent on research items. |
@@ -78,7 +78,7 @@ Lastly, **income can be saved between phases and turns**. You will not lose the 
 AP are a decreasing function of the number of centers controlled between **phases**, earned at the start of the Spring and Fall phases, and available to be spent for use across all phases. AP is calculated by adding a fixed base number for a given number of centers and an exponentially decreasing function of your total center-count. As your state grows, the relative AP that you get from each center is less and less, constraining you opportunities for orders in each turn.
 
 | Phase | Description |
-|--------------|----------------------------------------------------------|
+|----------------|--------------------------------------------------------|
 | Spring ($\pm$) | AP from centers held after the previous Fall phase is earned. AP can be spent on issuing orders (attack, hold, support, convoy) to units. |
 | Summer ($-$) | AP is spent on issuing retreat orders to units. |
 | Fall ($\pm$) | AP from centers held after the Spring phase is earned. AP can be spent on issuing orders to units. |
