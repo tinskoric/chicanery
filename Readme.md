@@ -17,8 +17,9 @@ Chicanery introduces a series of new mechanics, to support player interaction, b
 
 Chicanery further introduces a series of mechanics that can be broadly categorized as relating to player **unit-management**, **economy**, and **research** in game. Click any of the below layers to expand for an explain-er on the eponymous group of mechanics!
 
-::: {.callout-note icon="false" collapse="true"}
-## Units
+<details>
+
+  <summary>Units</summary>
 
 This note is short as the combat mechanics of units remain the same—enjoy your attacks, holds, supports, and convoy orders—rather, units are slightly altered in how they recover during retreat phases. After each movement phase, units must be *replenished* before being usable in combat for the next phase. The below table details the scenarios or units in a given movement phase, and their subsequent replenishment need in the following retreat phase:
 
@@ -41,7 +42,8 @@ This note is short as the combat mechanics of units remain the same—enjoy your
 : Unit Replenishment Chart
 
 As can be seen, losing a battle over a tile (province) where you are defending is very costly, particularly at the start. **If a unit is not replenished, it will be unusable for combat actions, including for support orders**. An un-replenished unit will not be able to take any orders—no attacks, holds, or supports—*except convoys that would bring it to friendly territory*[^3](cannot be used in convoys for attacking). An un-replenished unit will not hold if attacked, no matter if it is supported or not, and rather will immediately retreat[^4]. Replenishment costs *income* and the costs can be altered by *research*, which segues us nicely into the next sections.
-:::
+
+</details>
 
 [^1]: If you bounce your own units, and no one else tries to attack the area you bounced, then that counts as not having engaged in combat with those units—so long as those units weren't attacked otherwise.
 
@@ -51,14 +53,14 @@ As can be seen, losing a battle over a tile (province) where you are defending i
 
 [^4]: Choosing not to replenish a unit is NOT a death sentence for it. It will just keep retreating until you replenish it. It is perfectly viable—if you are okay with losing ground—to save money by not replenishing some units.
 
-:::: {.callout-note icon="false" collapse="true"}
-## Economy
+<details>
+
+  <summary>Economy</summary>
 
 In traditional (we're not talking about esoteric variants right now) Diplomacy, the player "economy" is extremely straightforward. There are a number of supply centers (centers hereafter) on the board based in cities. The number of centers you have defines how many units (referring to armies/fleets) you may build. In Chicanery, this relationship is abstracted.
 
-In Chicanery, centers generate **income** (denoted, $I$, in included formulae) and **action points** (denoted AP hereafter) which serve dual functions. Income is used to *purchase* (and *replenish*, in the case of units) things like units, buildings, and "accoutrements"[^5] (discussed in the research subsection). AP are used to *order* units and accoutrements. Income and AP are earned and accrued differently across turns and phases, illustrating the subtle difference in their functions. See the below tabset for details:
+In Chicanery, centers generate **income** (denoted, $I$, in included formulae) and **action points** (denoted AP hereafter) which serve dual functions. Income is used to *purchase* (and *replenish*, in the case of units) things like units, buildings, and "accoutrements"[^5] (discussed in the research subsection). AP are used to *order* units and accoutrements. Income and AP are earned and accrued differently across turns and phases, illustrating the subtle difference in their functions. See the below sections for details:
 
-::: panel-tabset
 ## Income
 
 Income is a linear function of the number of centers controlled between **turns**, earned at the start of the Spring phase (the start of a new turn), and available to be spent on various uses across all phases. Income is calculated purely by multiplying a scalar by the number of centers you possess (and adding bonuses from research).
@@ -106,17 +108,17 @@ If you gain/lose centers between the Spring and Fall phases, you will see the AP
 > E.g., if you control a center at the outset of Spring `year-something` and someone else takes it in that turn, then in Fall `year-something`, your earned AP in the latter turn will not include AP that would've been earned from that center. Conversely, if you were the other player who gained it, your AP in the latter turn will include the income from that center.
 
 Lastly, **AP can only be saved between phases**. You WILL lose the AP you do not spend between turns, it will **not** roll over from one year to the next. You **cannot** send other players your AP.
-:::
-::::
+
+</details>
 
 [^5]: Chose a fancy-sounding word but its really just a research tree that gives some buffs to economic management and some useful tools for deceit/strategy.
 
-:::: {.callout-note icon="false" collapse="true"}
-## Research
+<details>
 
-Last but not least is research. This mechanic integrates with the unit and economy changes, but also includes some fun gameplay elements. First there are plain buffs. These buffs center around reductions to the income cost of replenishment, some income bonuses for taking centers, and increases to the amount of AP earned for larger players. All items—buildings, accoutrements—must first be researched for a fixed cost of income. After being researched, individual buildings must be bought with income and placed with AP each time, and individual accoutrements must be bought with income (no AP needed for their use!). **Accoutrements are tools for subterfuge and deceit**. In the case of buffs, research functionally just means paying more for a better effect as the research for buffs is reset each turn. For buildings, research is a one-time cost to be able to build something—the research is not reset. For accoutrements, research is a one-time cost—the research is not reset—but accoutrements are one-time use, and must be bought for each use. Below is a tabset detailing research across these three groups:
+  <summary>Research</summary>
 
-::: panel-tabset
+Last but not least is research. This mechanic integrates with the unit and economy changes, but also includes some fun gameplay elements. First there are plain buffs. These buffs center around reductions to the income cost of replenishment, some income bonuses for taking centers, and increases to the amount of AP earned for larger players. All items—buildings, accoutrements—must first be researched for a fixed cost of income. After being researched, individual buildings must be bought with income and placed with AP each time, and individual accoutrements must be bought with income (no AP needed for their use!). **Accoutrements are tools for subterfuge and deceit**. In the case of buffs, research functionally just means paying more for a better effect as the research for buffs is reset each turn. For buildings, research is a one-time cost to be able to build something—the research is not reset. For accoutrements, research is a one-time cost—the research is not reset—but accoutrements are one-time use, and must be bought for each use. Below are sections detailing research across the three defined groups:
+
 ## Buildings
 
 There are only three buildings, they cost income to research (once), and then income purchase and AP to place, and they can only be placed during the build phase. Buildings act to make small adjustments to traditional Diplomacy mechanics. Although these buildings are *not* temporary, there is a limit to the number of buildings you can place according to the total number of provinces you command, and they can be destroyed or lost. If you exceed your limit, then you must delete buildings during the Build phase until you are within your limit.
@@ -171,8 +173,8 @@ Hi-Fi Audio:
 > 2.  The players currently in *any* call.
 >
 > No level of research will show exactly which player is in which call, but by knowing the details above and using some deduction it should be possible to decipher who is with who in what calls.
-:::
-::::
+
+</details>
 
 [^6]: To elaborate: if you beat someone in Spring `year-something` and take their tile, and that tile had a fort stationed therein, then if you do not replenish the fort **before** Fall of `year-something+1` (so after Fall of `year-something` and Spring of `year-something+1` , up to Summer of `year-something+1` at the latest) it will be destroyed and removed from the map along with the +1 defense in the tile.
 
