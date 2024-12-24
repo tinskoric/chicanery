@@ -1,9 +1,8 @@
+# Chicanery
+
 ---
-Title: "Chicanery"
 Authors: "Kenny Luong, Adam Sikorski, Tin Skoric, Issac Zheng"
 ---
-
-# Chicanery
 
 ------------------------------------------------------------------------
 
