@@ -7,7 +7,7 @@ Authors: "Kenny Luong, Adam Sikorski, Tin Skoric, Issac Zheng"
 
 # Chicanery
 
-A game inspired by [Diplomacy](https://en.wikipedia.org/wiki/Diplomacy_(game) "Diplomacy (game) Wikipedia") but with its own identity.
+A game inspired by [Diplomacy](https://en.wikipedia.org/wiki/Diplomacy_(game) "Diplomacy (game) Wikipedia") but with its own identity. See the wikisite for Chicanery [here](https://chicanerygame.netlify.app/) to learn more, or read the brief descriptions below!
 
 ## Overview
 
@@ -33,8 +33,6 @@ This note is short as the combat mechanics of units remain the same—enjoy your
 | Unit engaged in **offensive** combat and was **successful**. | No need[^2]. |
 | Unit engaged in **offensive** combat and **failed** (didn't take territory). | Base of 50% replenishment need. |
 
-: Unit Replenishment Chart
-
 [^1]: If you bounce your own units, and no one else tries to attack the area you bounced, then that counts as not having engaged in combat with those units—so long as those units weren't attacked otherwise.
 
 [^2]: Pillaging sure is great.
@@ -53,7 +51,7 @@ As can be seen, losing a battle over a tile (province) where you are defending i
 
 In traditional (we're not talking about esoteric variants right now) Diplomacy, the player "economy" is extremely straightforward. There are a number of supply centers (centers hereafter) on the board based in cities. The number of centers you have defines how many units (referring to armies/fleets) you may build. In Chicanery, this relationship is abstracted.
 
-In Chicanery, centers generate **income** (denoted, $I$, in included formulae) and **action points** (denoted AP hereafter) which serve dual functions. Income is used to *purchase* (and *replenish*, in the case of units) things like units, buildings, and "accoutrements"[^5] (discussed in the research subsection). AP are used to *order* units and accoutrements. Income and AP are earned and accrued differently across turns and phases, illustrating the subtle difference in their functions. See the below sections for details:
+In Chicanery, centers generate **income** (denoted, $I$, in included formulae) and **action points** (denoted AP hereafter) which serve dual functions. Income is used to *purchase* (and *replenish*, in the case of units) things like units, buildings, and "accoutrements"[^5] (discussed in the research subsection). AP are used to *order* units and (place) buildings. Income and AP are earned and accrued differently across turns and phases, illustrating the subtle difference in their functions. See the below sections for details:
 
 [^5]: Chose a fancy-sounding word but its really just a research tree that gives some buffs to economic management and some useful tools for deceit/strategy.
 
@@ -69,8 +67,6 @@ Income is a linear function of the number of centers controlled between **turns*
 | Winter ($-$) | Income is spent on replenishing units. |
 | Build ($-$) | Income is spent on purchasing new units and research items. |
 
-: Income by Phase
-
 Lastly, **income can be saved between phases and turns**. You will not lose the income you do not spend, it will roll over from one turn to the next. You **can** send other players a portion (or all) of your income.
 
 ### Action Points (AP)
@@ -84,8 +80,6 @@ AP are a decreasing function of the number of centers controlled between **phase
 | Fall ($\pm$) | AP from centers held after the Spring phase is earned. AP can be spent on issuing orders to units. |
 | Winter ($-$) | AP is spent on issuing retreat orders to units. |
 | Build ($-$) | AP is spent on placing new units and researched buildings—ports, supply hubs, and forts. |
-
-: Action Points (AP) by Phase
 
 If you gain/lose centers between the Spring and Fall phases, you will see the AP you earn in the latter phase altered, even if your opponent does not control that center for the whole turn.
 
@@ -107,11 +101,9 @@ There are only three buildings, they cost income to research (once), and then in
 
 | Type | Effect |
 |----|----|
-| Fort | Building a fort in a tile (province) simply adds a permanent +1 to defense in that tile. Think of it as having a second army that can take no orders but automatically follows a support-defend order on whatever *friendly* unit is occupying the tile. Unlike the other two buildings, **forts cost replenishment**—equal to the costs of a typical unit. If a defense for a tile is lost and an enemy takes control, the opposing player who has assumed control of the province must pay to replenish the fort. Unlike units, which will simply retreat if left un-replenished, if a fort is left un-replenished for two entire movement phases (Spring and Fall or Fall and Spring) after first needing replenishment, it will be destroyed[^6]. Forts *do not* earn income or AP, and they *do not* contribute to your total number of centers. Ports require replenishment (as detailed) and *are not* destroyed upon the loss of a tile—so long as they are replenished. |
+| Fort | Building a fort in a tile (province) simply adds a permanent +1 to defense in that tile. Think of it as having a second army that can take no orders but automatically follows a support-defend order on whatever *friendly* unit is occupying the tile. Unlike the other two buildings, **forts cost replenishment**—equal to the costs of a typical unit. If a defense for a tile is lost and an enemy takes control, the opposing player who has assumed control of the province must pay to replenish the fort. Unlike units, which will simply retreat if left un-replenished, if a fort is left un-replenished for two entire movement phases (Spring and Fall or Fall and Spring) after first needing replenishment, it will be destroyed[^6]. Forts *do not* earn income or AP, and they *do not* contribute to your total number of centers. Forts require replenishment (as detailed) and *are not* destroyed upon the loss of a tile—so long as they are replenished. |
 | Port | Building a port in a tile (province) allows one army and one fleet (or two fleets and no army) to simultaneously occupy the same tile, by effectively creating a sub-tile for the fleet. Since the actual tile continues to hold only a single unit this still counts only as a +1 defense rather than a +2. If the main tile is lost, both units must retreat to their respective adjacent options. Each unit can still operate independently from the province (e.g., they can attack or support different things, **including each other**[^7]). Ports *do not* earn income or AP, and they *do not* contribute to your total number of centers. Ports *do not* require replenishment and *are not* destroyed upon the loss of a tile—ports are only destroyed if you have to destroy them to stay within your building limit. |
 | Supply Hub | In classic Diplomacy, you can only build units in your starting centers... until you build a supply hub! Supply hubs allow you to build units in whichever tile (province) a supply hub is present in. Supply hubs *do not* earn income or AP, and they *do not* contribute to your total number of centers. Supply centers *do not* require replenishment, but **are immediately destroyed upon the loss of the tile**[^8]. |
-
-: Research Information: Buildings
 
 [^6]: To elaborate: if you beat someone in Spring `year-something` and take their tile, and that tile had a fort stationed therein, then if you do not replenish the fort **before** Fall of `year-something+1` (so after Fall of `year-something` and Spring of `year-something+1` , up to Summer of `year-something+1` at the latest) it will be destroyed and removed from the map along with the +1 defense in the tile.
 
