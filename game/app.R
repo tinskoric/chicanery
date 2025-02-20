@@ -1,8 +1,11 @@
 library(bslib)
 library(emojifont)
+library(emoGG)
+library(ggiraph)
 library(ggthemes)
 library(ggpubr)
 library(gridlayout)
+library(patchwork)
 library(plotly)
 library(png)
 library(Rfast)
@@ -34,7 +37,7 @@ ui <- grid_page(
   grid_card(
     area = "map",
     card_body(
-      plotlyOutput(
+      girafeOutput(
         outputId = "map",
         height = "100%",
         width = "100%"
@@ -154,20 +157,20 @@ ui <- grid_page(
               area = "mapModeButtons",
               card_body(
                 popover(
-                    actionButton(
-                      inputId = "mapModeSelect",
-                      label = "Select Map Mode"
-                    ),
-                    title = "Map Mode",
-                    id = "mapModePopover",
-                    placement = "top",
-                    radioButtons(
-                      inputId = "mapModeSelectPopover",
-                      label = "",
-                      choices = list(
-                        "Tiles" = "tilemap",
-                        "Provinces" = "provincemap",
-                        "Regions" = "regionmap"
+                  actionButton(
+                    inputId = "mapModeSelect",
+                    label = "Select Map Mode"
+                  ),
+                  title = "Map Mode",
+                  id = "mapModePopover",
+                  placement = "top",
+                  radioButtons(
+                    inputId = "mapModeSelectPopover",
+                    label = "",
+                    choices = list(
+                      "Tiles" = "tilemap",
+                      "Provinces" = "provincemap",
+                      "Regions" = "regionmap"
                     ),
                     width = "200%"
                   )
@@ -257,35 +260,31 @@ ui <- grid_page(
 
 
 server <- function(input, output, server) {
-   #  input$mapModeSelectPopover
-  output$map <- renderPlotly({
-      layout(ggplotly(ggplot() + 
-           # background_image(readPNG(paste("data/map/", "tilemap", ".png", sep=""))) +
-           geom_sf(data = (mapdata %>% filter(occupied_by != "unoccupied")), aes(fill = occupied_by), alpha = 0.5) +
-           geom_sf_text(data = (mapdata %>% filter(unit != "none") %>% mutate(unit_icon = case_when(unit == "NAVY" ~ emoji("sailboat"), TRUE ~ emoji("guardsman")))), aes(label = unit_icon)) +
-           scale_fill_brewer(palette = "Dark2", direction = 1) +
-            theme_void() +
-            theme(
-              legend.position = "none",
-              axis.line = element_blank(),
-              panel.grid.major = element_blank(),
-              panel.grid.minor = element_blank(),
-              panel.border = element_blank(),
-              panel.background = element_blank(),
-            )) %>% config(displayModeBar = FALSE), images = list(
-              list(
-                source = paste("data/map/", "tilemap", ".png", sep=""),
-                xref = "x",
-                yref = "y",
-                x = 0,
-                y = 2,
-                sizex = 100,
-                sizey = 4,
-                sizing = "stretch",
-                opacity = 1,
-                layer = "below"
-              )
-            ))
+  
+  map_pieces <- mapdata %>% 
+    filter(unit != "none") %>% 
+    mutate(x = st_coordinates(centroid)[,1],
+           y = st_coordinates(centroid)[,2])
+  
+  output$map <- renderGirafe({
+    bg_gg <- ggplot() + background_image(readPNG(paste("data/map/", input$mapModeSelectPopover, ".png", sep=""))) + theme(aspect.ratio = 1)
+    map_gg <- bg_gg + 
+    geom_sf_interactive(data = (mapdata %>% filter(occupied_by != "unoccupied")), aes(fill = occupied_by, tooltip = unit), color = "transparent", alpha = 0.5) +
+    geom_emoji(data = (map_pieces %>% filter(unit == "NAVY")), aes(x, y), emoji = "26f5", size = 0.02) +
+    geom_emoji(data = (map_pieces %>% filter(unit == "ARMY")), aes(x, y), emoji = "1f482", size = 0.02) +
+    scale_fill_brewer(palette = "Dark2", direction = 1) +
+    coord_sf(xlim = c(0, 2147), ylim = c(0, 2160)) +
+    theme_void() +
+    theme(
+      legend.position = "none",
+      axis.line = element_blank(),
+      panel.grid.major = element_blank(),
+      panel.grid.minor = element_blank(),
+      panel.border = element_blank(),
+      panel.background = element_blank(),
+      aspect.ratio = 1
+    )
+    girafe(ggobj = map_gg) %>% girafe_options(opts_hover(css = "fill:orange;"), opts_zoom(min = 1.3, max = 5))
   })
   
   #chat_server("test",
