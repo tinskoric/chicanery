@@ -14,7 +14,7 @@ map_data <- read_rds("data/gamedata.rds")
 
 # generate background image (basically: maps [tile, prov, region] w/o country control)
 
-#tile (notice how it's actually just empty? the lines of tiles are put there in game!)
+#tile
 tile_bg <- ggplot() +
   geom_sf(data = (map_data %>% filter(substr(tile, 1, 3) == "SEA")), fill = "navy", color = "navy") +
   geom_sf(data = (map_data %>% filter(substr(tile, 1, 4) == "TILE")), fill = "beige", color = "beige") +

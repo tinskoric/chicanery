@@ -1,6 +1,7 @@
 library(bslib)
 library(emojifont)
 library(emoGG)
+library(ggimage)
 library(ggiraph)
 library(ggthemes)
 library(ggpubr)
@@ -8,6 +9,7 @@ library(gridlayout)
 library(patchwork)
 library(plotly)
 library(png)
+library(raster)
 library(Rfast)
 library(shiny)
 library(shinyChatR)
@@ -16,6 +18,8 @@ library(tidyverse)
 
 #chatdata <- read_rds("data/chatdata.rds")
 mapdata <- st_cast(read_rds("data/gamedata.rds"), "MULTIPOLYGON")
+# palette (this palette is from the Dark2 colorBrewer palette)
+map_palette <- c(FRA = "#a6cee3", GBR = "#1f78b4", RUS = "#33a02c", ITA = "#b2df8a", AHE = "#ff7f00", GER = "#b15928", OTT = "#e31a1c")
 
 ui <- grid_page(
   theme = bs_theme(version = 5, bootswatch = "minty"),
@@ -74,15 +78,15 @@ ui <- grid_page(
                   ),
                   gap_size = "10px",
                   col_sizes = c(
-                    "0.3fr",
-                    "0.7fr"
+                    "100px",
+                    "1fr"
                   ),
                   row_sizes = c(
-                    "1fr"
+                    "130px"
                   ),
                   grid_card(
                     area = "nationalFlag",
-                    card_body(uiOutput(outputId = "nationalFlagOutput"))
+                    card_body(plotOutput(outputId = "nationalFlagOutput"))
                   ),
                   grid_card(
                     area = "nationalDetails",
@@ -266,13 +270,32 @@ server <- function(input, output, server) {
     mutate(x = st_coordinates(centroid)[,1],
            y = st_coordinates(centroid)[,2])
   
+  output$nationalFlagOutput <- renderPlot({
+    plotRGB(stack("data/flags/GBR.png"))
+  })
+  
   output$map <- renderGirafe({
     bg_gg <- ggplot() + background_image(readPNG(paste("data/map/", input$mapModeSelectPopover, ".png", sep=""))) + theme(aspect.ratio = 1)
     map_gg <- bg_gg + 
     geom_sf_interactive(data = (mapdata %>% filter(occupied_by != "unoccupied")), aes(fill = occupied_by, tooltip = unit), color = "transparent", alpha = 0.5) +
-    geom_emoji(data = (map_pieces %>% filter(unit == "NAVY")), aes(x, y), emoji = "26f5", size = 0.02) +
-    geom_emoji(data = (map_pieces %>% filter(unit == "ARMY")), aes(x, y), emoji = "1f482", size = 0.02) +
-    scale_fill_brewer(palette = "Dark2", direction = 1) +
+    # geom_emoji(data = (map_pieces %>% filter(unit == "NAVY")), aes(x, y), emoji = "26f5", size = 0.02) +
+    # geom_emoji(data = (map_pieces %>% filter(unit == "ARMY")), aes(x, y), emoji = "1f482", size = 0.02) +
+    geom_image(data = (map_pieces %>% filter(unit == "NAVY") %>% filter(occupied_by == "GBR")), aes(x, y), image = paste("data/icons/", "GBR", "/NAVY.png", sep = ""), size = 0.015, alpha = 0.7) +
+    geom_image(data = (map_pieces %>% filter(unit == "ARMY") %>% filter(occupied_by == "GBR")), aes(x, y), image = paste("data/icons/", "GBR", "/ARMY.png", sep = ""), size = 0.015, alpha = 0.7) +
+    geom_image(data = (map_pieces %>% filter(unit == "NAVY") %>% filter(occupied_by == "FRA")), aes(x, y), image = paste("data/icons/", "FRA", "/NAVY.png", sep = ""), size = 0.015, alpha = 0.7) +
+    geom_image(data = (map_pieces %>% filter(unit == "ARMY") %>% filter(occupied_by == "FRA")), aes(x, y), image = paste("data/icons/", "FRA", "/ARMY.png", sep = ""), size = 0.015, alpha = 0.7) +
+    geom_image(data = (map_pieces %>% filter(unit == "NAVY") %>% filter(occupied_by == "RUS")), aes(x, y), image = paste("data/icons/", "RUS", "/NAVY.png", sep = ""), size = 0.015, alpha = 0.7) +
+    geom_image(data = (map_pieces %>% filter(unit == "ARMY") %>% filter(occupied_by == "RUS")), aes(x, y), image = paste("data/icons/", "RUS", "/ARMY.png", sep = ""), size = 0.015, alpha = 0.7) +
+    geom_image(data = (map_pieces %>% filter(unit == "NAVY") %>% filter(occupied_by == "ITA")), aes(x, y), image = paste("data/icons/", "ITA", "/NAVY.png", sep = ""), size = 0.015, alpha = 0.7) +
+    geom_image(data = (map_pieces %>% filter(unit == "ARMY") %>% filter(occupied_by == "ITA")), aes(x, y), image = paste("data/icons/", "ITA", "/ARMY.png", sep = ""), size = 0.015, alpha = 0.7) +
+    geom_image(data = (map_pieces %>% filter(unit == "NAVY") %>% filter(occupied_by == "AHE")), aes(x, y), image = paste("data/icons/", "AHE", "/NAVY.png", sep = ""), size = 0.015, alpha = 0.7) +
+    geom_image(data = (map_pieces %>% filter(unit == "ARMY") %>% filter(occupied_by == "AHE")), aes(x, y), image = paste("data/icons/", "AHE", "/ARMY.png", sep = ""), size = 0.015, alpha = 0.7) +
+    geom_image(data = (map_pieces %>% filter(unit == "NAVY") %>% filter(occupied_by == "GER")), aes(x, y), image = paste("data/icons/", "GER", "/NAVY.png", sep = ""), size = 0.015, alpha = 0.7) +
+    geom_image(data = (map_pieces %>% filter(unit == "ARMY") %>% filter(occupied_by == "GER")), aes(x, y), image = paste("data/icons/", "GER", "/ARMY.png", sep = ""), size = 0.015, alpha = 0.7) +
+    geom_image(data = (map_pieces %>% filter(unit == "NAVY") %>% filter(occupied_by == "OTT")), aes(x, y), image = paste("data/icons/", "OTT", "/NAVY.png", sep = ""), size = 0.015, alpha = 0.7) +
+    geom_image(data = (map_pieces %>% filter(unit == "ARMY") %>% filter(occupied_by == "OTT")), aes(x, y), image = paste("data/icons/", "OTT", "/ARMY.png", sep = ""), size = 0.015, alpha = 0.7) +
+    # scale_fill_brewer(palette = "Dark2", direction = 1) +
+    scale_fill_manual_interactive(values = map_palette) +
     coord_sf(xlim = c(0, 2147), ylim = c(0, 2160)) +
     theme_void() +
     theme(
@@ -284,7 +307,13 @@ server <- function(input, output, server) {
       panel.background = element_blank(),
       aspect.ratio = 1
     )
-    girafe(ggobj = map_gg) %>% girafe_options(opts_hover(css = "fill:orange;"), opts_zoom(min = 1.3, max = 5))
+    girafe(ggobj = map_gg, fonts = list(sans = "Space Grotesk")) %>% 
+      girafe_options(
+        opts_tooltip(
+          use_fill = TRUE
+        ),
+        opts_hover(css = "fill:orange;"),
+        opts_zoom(min = 1.3, max = 5))
   })
   
   #chat_server("test",
